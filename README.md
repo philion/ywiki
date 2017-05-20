@@ -2,8 +2,7 @@
 
 Pronounced "lambda-wiki", but spelled with a 'y' because it was easier that typing out "lambda", and *much* easier than figuring out the Unicode every time.
 
-This is a simple Markdown wiki, in [Java|https://docs.oracle.com/javase/8/docs/api/], [Jersey|https://jersey.github.io/], [AWS Lambda|https://aws.amazon.com/lambda/], and [aws-serverless-java|https://github.com/awslabs/aws-serverless-java-container]. It is designed to demonstrate fully automated build and deploy to AWS Lambda, as well as simple
-monitoring and metrics (devops).
+This is a simple Markdown wiki, in [Java](https://docs.oracle.com/javase/8/docs/api/), [Jersey](https://jersey.github.io/), [AWS Lambda](https://aws.amazon.com/lambda/), and [aws-serverless-java](https://github.com/awslabs/aws-serverless-java-container). It is designed to demonstrate fully automated build and deploy to AWS Lambda, as well as simple monitoring and metrics (devops).
 
 Starting with https://github.com/awslabs/aws-serverless-java-container/tree/master/samples/jersey/pet-store as a seed project.
 
