@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ywiki
+Outputs:
+  ywikiApi:
+    Description: URL for application
+    Export:
+      Name: ywikiApi
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/wiki
+Resources:
+  ywikiFunction:
+    Properties:
+      CodeUri: s3://wiki-7vhvp4r9/1808e83767ab867e8f0f0fec080e9d40
+      Events:
+        GetResource:
+          Properties:
+            Method: any
+            Path: /{proxy+}
+          Type: Api
+      Handler: com.acmerocket.ywiki.LambdaHandler::handleRequest
+      MemorySize: 512
+      Policies: AWSLambdaBasicExecutionRole
+      Runtime: java8
+      Timeout: 20
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

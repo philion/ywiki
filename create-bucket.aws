@@ -1,0 +1,8 @@
+# create the bucket
+aws s3api create-bucket --bucket wiki-7vhvp4r9 --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
+
+# upload the package (after each build? formal deploy?)
+aws cloudformation package --template-file sam.yaml --output-template-file output-sam.yaml --s3-bucket wiki-7vhvp4r9
+
+# deploy
+aws cloudformation deploy --template-file output-sam.yaml --stack-name wiki --capabilities CAPABILITY_IAM

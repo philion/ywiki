@@ -10,18 +10,19 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
  * and limitations under the License.
  */
-package com.amazonaws.serverless.sample.jersey;
-
-import com.amazonaws.serverless.sample.jersey.model.Pet;
-import com.amazonaws.serverless.sample.jersey.model.PetData;
+package com.acmerocket.ywiki;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import com.acmerocket.ywiki.model.Pet;
+import com.acmerocket.ywiki.model.PetData;
+
 import java.util.UUID;
 
-@Path("/pets")
-public class PetsResource {
+@Path("/wiki")    // ywiki???
+public class WikiResource {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

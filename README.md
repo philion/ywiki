@@ -7,6 +7,20 @@ monitoring and metrics (devops).
 
 Starting with https://github.com/awslabs/aws-serverless-java-container/tree/master/samples/jersey/pet-store as a seed project.
 
+## Next Steps
+
+* Add simple MD file, make sure it gets served.
+* Add JS-based editor, host resources locally.
+* Get POST/UPDATE working.
+
+### Notes on sam.yaml
+
+* Auto-generate: (fill std template)
+  * Handler: from annotation on method
+  * Runtime: from mvn
+  * CodeUri: from mvn
+  * API Value: from @Path
+
 ----
 
 # Original Pet Store Docs

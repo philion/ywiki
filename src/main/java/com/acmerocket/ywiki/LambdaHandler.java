@@ -10,7 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
  * and limitations under the License.
  */
-package com.amazonaws.serverless.sample.jersey;
+package com.acmerocket.ywiki;
 
 import com.amazonaws.serverless.proxy.internal.model.AwsProxyRequest;
 import com.amazonaws.serverless.proxy.internal.model.AwsProxyResponse;
@@ -21,8 +21,8 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
 public class LambdaHandler implements RequestHandler<AwsProxyRequest, AwsProxyResponse> {
-    private final ResourceConfig jerseyApplication = new ResourceConfig().packages("com.amazonaws.serverless.sample.jersey").register(JacksonFeature.class);
-    private final JerseyLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler = JerseyLambdaContainerHandler.getAwsProxyHandler(jerseyApplication);
+    private final ResourceConfig app = new ResourceConfig().packages("com.acmerocket.ywiki").register(JacksonFeature.class);
+    private final JerseyLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler = JerseyLambdaContainerHandler.getAwsProxyHandler(app);
 
     @Override
     public AwsProxyResponse handleRequest(AwsProxyRequest awsProxyRequest, Context context) {
