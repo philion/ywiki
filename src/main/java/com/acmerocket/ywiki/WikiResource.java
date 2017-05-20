@@ -69,6 +69,9 @@ public class WikiResource {
         newPet.setBreed(PetData.getRandomBreed());
         newPet.setDateOfBirth(PetData.getRandomDoB());
         newPet.setName(PetData.getRandomName());
+        
+        LOG.debug("Created: {}", newPet);
+        
         return newPet;
     }
 }

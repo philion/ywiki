@@ -51,4 +51,8 @@ public class Pet {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+    
+    public String toString() {
+    	return "a " + breed + " named " + name;
+    }
 }

@@ -48,7 +48,7 @@
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>${jersey.version}</version>
 		</dependency>
-		
+
 		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -59,6 +59,13 @@
 			<groupId>io.symphonia</groupId>
 			<artifactId>lambda-logging</artifactId>
 			<version>1.0.0</version>
+		</dependency>
+
+		<!-- test -->
+		<dependency>
+			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+			<artifactId>jersey-test-framework-provider-inmemory</artifactId>
+			<version>${jersey.version}</version>
 		</dependency>
 	</dependencies>
 

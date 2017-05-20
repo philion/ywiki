@@ -1,0 +1,23 @@
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %42.42logger{42} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.acmerocket" level="debug"/>
+    
+    <!--
+    <logger name="com.sun.jersey.api.container.filter.LoggingFilter" level="trace" /> // turn on jersey tracing   
+    <logger name="com.google.code.morphia" level="trace"/> // turn on morphia tracing
+    <logger name="com.sun.jersey.api.container.filter.LoggingFilter" level="debug" /> // turn on request tracing
+    <logger name="org.apache.http" level="info" />
+    <logger name="com.amazonaws" level="info" />
+    <logger name="org.hibernate.validator" level="info" />    
+    <logger name="org.eclipse.jetty" level="info"/>
+    -->
+
+    <root level="info">
+        <appender-ref ref="console" />
+    </root>
+</configuration>
