@@ -12,20 +12,24 @@
  */
 package com.acmerocket.ywiki;
 
+import org.glassfish.jersey.jackson.JacksonFeature;
+import org.glassfish.jersey.server.ResourceConfig;
+
 import com.amazonaws.serverless.proxy.internal.model.AwsProxyRequest;
 import com.amazonaws.serverless.proxy.internal.model.AwsProxyResponse;
 import com.amazonaws.serverless.proxy.jersey.JerseyLambdaContainerHandler;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import org.glassfish.jersey.jackson.JacksonFeature;
-import org.glassfish.jersey.server.ResourceConfig;
 
 public class LambdaHandler implements RequestHandler<AwsProxyRequest, AwsProxyResponse> {
+    private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(LambdaHandler.class);
+
     private final ResourceConfig app = new ResourceConfig().packages("com.acmerocket.ywiki").register(JacksonFeature.class);
     private final JerseyLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler = JerseyLambdaContainerHandler.getAwsProxyHandler(app);
 
     @Override
     public AwsProxyResponse handleRequest(AwsProxyRequest awsProxyRequest, Context context) {
+        LOG.info("request: {}, context: {}", awsProxyRequest, context);
         return handler.proxy(awsProxyRequest, context);
     }
 }

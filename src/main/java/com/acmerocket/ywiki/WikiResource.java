@@ -23,6 +23,7 @@ import java.util.UUID;
 
 @Path("/wiki")    // ywiki???
 public class WikiResource {
+    private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(WikiResource.class);
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -54,6 +55,8 @@ public class WikiResource {
             newPet.setDateOfBirth(PetData.getRandomDoB());
             outputPets[i] = newPet;
         }
+        
+        LOG.info("created {} pets, pet[0]: {}", outputPets.length, outputPets[0]);
 
         return outputPets;
     }

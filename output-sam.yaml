@@ -10,7 +10,7 @@ Outputs:
 Resources:
   ywikiFunction:
     Properties:
-      CodeUri: s3://wiki-7vhvp4r9/1808e83767ab867e8f0f0fec080e9d40
+      CodeUri: s3://wiki-7vhvp4r9/8a6935b632384e494f4ee688533fac42
       Events:
         GetResource:
           Properties:
