@@ -19,6 +19,51 @@ Starting with https://github.com/awslabs/aws-serverless-java-container/tree/mast
   * Runtime: from mvn
   * CodeUri: from mvn
   * API Value: from @Path
+  
+## Open Questions
+
+* How will revision history be stored?
+* How will AUTH be handled?
+* How will authorization work? Ownership?
+* What MD front-end? Pick editor with display only?
+
+## Use Cases
+
+### Display public page
+
+### Display protected page
+
+### Edit page
+
+### Authenticate (Login)
+
+### Search
+
+## Technology Choices
+
+### Persistance
+* DynamoDB: http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-dynamodb.html
+* S3: http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-s3.html
+
+### Markdown Editing
+* SimpleMDE: https://simplemde.com/
+* StackEdit: https://github.com/benweet/stackedit
+* Editor.md: https://pandao.github.io/editor.md/en.html
+* Trumpbowyg: http://alex-d.github.io/Trumbowyg/
+* MarkdownPlus: https://github.com/tylingsoft/markdown-plus
+* Bootstrap Markdown: http://www.codingdrama.com/bootstrap-markdown/
+
+- Which supports interaction diagrams?
+
+Others:
+* https://github.com/substance/substance
+
+Note: It would be great to use the same lib for both edit and display.
+
+See also: http://www.developersfeed.com/awesome-javascript-wysiwyg-markdown-editors/
+
+### Markdown Rendering
+
 
 ----
 
