@@ -15,30 +15,50 @@
  */
 package com.acmerocket.ywiki;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Application;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
-import com.acmerocket.ywiki.model.Pet;
+import com.acmerocket.ywiki.model.WikiEntry;
 
 /**
  * @author philion
  *
  */
 public class SimpleResourceTest extends JerseyTest {
+    private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(SimpleResourceTest.class);
 
 	@Override
 	protected Application configure() {
-		return new ResourceConfig(WikiResource.class);
+		return new ResourceConfig().register(WikiBinder.INSTANCE).packages("com.acmerocket.ywiki");
 	}
 
 	@Test
 	public void test() {
-		final Pet pet = target("wiki/1234").request().get(Pet.class);
-		assertNotNull(pet.getId());
+	    //java.util.logging.Logger.getLogger("org.glassfish.jersey").setLevel(Level.FINEST);
+	    
+	    // create the wikipage
+	    final WikiEntry entry = new WikiEntry();
+	    entry.setPath("index");
+	    entry.setTitle("Test");
+	    entry.setUser("testUser");
+	    entry.setContent("# Test\\n"
+	            + "*This* is a **test**.");
+	    
+	    Response response = target("wiki").request().post(Entity.entity(entry, MediaType.APPLICATION_JSON));
+	    LOG.debug("response: {}", response);
+	    assertEquals(200, response.getStatus());
+	    
+	    final WikiEntry check = target("wiki/" + entry.getPath()).request().get(WikiEntry.class);
+		assertEquals(entry.getPath(), check.getPath());
+        assertEquals(entry.getTitle(), check.getTitle());
+        assertEquals(entry.getUser(), check.getUser());
 	}
 }

@@ -24,7 +24,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 public class LambdaHandler implements RequestHandler<AwsProxyRequest, AwsProxyResponse> {
     private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(LambdaHandler.class);
 
-    private final ResourceConfig app = new ResourceConfig().packages("com.acmerocket.ywiki").register(JacksonFeature.class);
+    private final ResourceConfig app = new ResourceConfig().register(WikiBinder.INSTANCE).packages("com.acmerocket.ywiki").register(JacksonFeature.class);
     private final JerseyLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler = JerseyLambdaContainerHandler.getAwsProxyHandler(app);
 
     @Override

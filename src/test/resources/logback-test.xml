@@ -17,7 +17,7 @@
     <logger name="org.eclipse.jetty" level="info"/>
     -->
 
-    <root level="info">
+    <root level="debug">
         <appender-ref ref="console" />
     </root>
 </configuration>

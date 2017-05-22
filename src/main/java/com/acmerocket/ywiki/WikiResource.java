@@ -12,66 +12,53 @@
  */
 package com.acmerocket.ywiki;
 
-import javax.ws.rs.*;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.acmerocket.ywiki.model.Pet;
-import com.acmerocket.ywiki.model.PetData;
-
-import java.util.UUID;
+import com.acmerocket.ywiki.model.WikiEntry;
 
 @Path("/wiki")    // ywiki???
+@Singleton
 public class WikiResource {
     private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(WikiResource.class);
+    
+    private final WikiDAO dao;
+    
+    @Inject
+    public WikiResource(final WikiDAO dao) {
+        this.dao = dao;
+    }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createPet(final Pet newPet) {
-        if (newPet.getName() == null || newPet.getBreed() == null) {
-            return Response.status(400).entity(new Error("Invalid name or breed")).build();
-        }
-
-        Pet dbPet = newPet;
-        dbPet.setId(UUID.randomUUID().toString());
-        return Response.status(200).entity(dbPet).build();
+    public Response create(final WikiEntry entry) {
+        LOG.info("POST: {}", entry);
+        
+        // TODO error checking?
+        this.dao.update(entry);
+        
+        //return Response.status(200).entity(entry).build();
+        return Response.status(200).build();
     }
 
-    @GET
+    @GET 
+    @Path("{path:(.+)?}")    // use a regex to capture full path with '/'. https://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html
     @Produces(MediaType.APPLICATION_JSON)
-    public Pet[] listPets(@QueryParam("limit") int limit) {
-        if (limit < 1) {
-            limit = 10;
-        }
-
-        Pet[] outputPets = new Pet[limit];
-
-        for (int i = 0; i < limit; i++) {
-            Pet newPet = new Pet();
-            newPet.setId(UUID.randomUUID().toString());
-            newPet.setName(PetData.getRandomName());
-            newPet.setBreed(PetData.getRandomBreed());
-            newPet.setDateOfBirth(PetData.getRandomDoB());
-            outputPets[i] = newPet;
-        }
+    public WikiEntry get(@PathParam("path") String path) {
+                
+        WikiEntry entry = this.dao.get(path);
         
-        LOG.info("created {} pets, pet[0]: {}", outputPets.length, outputPets[0]);
-
-        return outputPets;
-    }
-
-    @Path("/{petId}") @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Pet getPetDetails() {
-        Pet newPet = new Pet();
-        newPet.setId(UUID.randomUUID().toString());
-        newPet.setBreed(PetData.getRandomBreed());
-        newPet.setDateOfBirth(PetData.getRandomDoB());
-        newPet.setName(PetData.getRandomName());
+        LOG.info("found: {} -> {}", path, entry);
         
-        LOG.debug("Created: {}", newPet);
-        
-        return newPet;
+        return entry;
     }
 }
