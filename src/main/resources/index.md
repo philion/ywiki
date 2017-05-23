@@ -8,9 +8,9 @@ Starting with https://github.com/awslabs/aws-serverless-java-container/tree/mast
 
 ## Next Steps
 
-* [x] Add simple MD file, make sure it gets served.
-* [ ] Add JS-based editor, host resources locally.
-* [ ] Get POST/UPDATE working.
+* Add simple MD file, make sure it gets served.
+* Add JS-based editor, host resources locally.
+* Get POST/UPDATE working.
 
 ### Notes on sam.yaml
 

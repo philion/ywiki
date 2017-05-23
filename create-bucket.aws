@@ -6,3 +6,6 @@ aws cloudformation package --template-file sam.yaml --output-template-file outpu
 
 # deploy
 aws cloudformation deploy --template-file output-sam.yaml --stack-name wiki --capabilities CAPABILITY_IAM
+
+
+aws cloudformation describe-stacks --stack-name wiki

@@ -45,20 +45,22 @@ public class SimpleResourceTest extends JerseyTest {
 	    //java.util.logging.Logger.getLogger("org.glassfish.jersey").setLevel(Level.FINEST);
 	    
 	    // create the wikipage
-	    final WikiEntry entry = new WikiEntry();
-	    entry.setPath("index");
-	    entry.setTitle("Test");
-	    entry.setUser("testUser");
-	    entry.setContent("# Test\\n"
-	            + "*This* is a **test**.");
+	    //final WikiEntry entry = new WikiEntry();
+	    //entry.setPath("index");
+	    //entry.setTitle("Test");
+	    //entry.setUser("testUser");
+	    //entry.setContent("# Test\\n"
+	    //        + "*This* is a **test**.");
 	    
-	    Response response = target("wiki").request().post(Entity.entity(entry, MediaType.APPLICATION_JSON));
-	    LOG.debug("response: {}", response);
-	    assertEquals(200, response.getStatus());
+	    //Response response = target("wiki").request().post(Entity.entity(entry, MediaType.APPLICATION_JSON));
+	    //LOG.debug("response: {}", response);
+	    //assertEquals(200, response.getStatus());
 	    
-	    final WikiEntry check = target("wiki/" + entry.getPath()).request().get(WikiEntry.class);
-		assertEquals(entry.getPath(), check.getPath());
-        assertEquals(entry.getTitle(), check.getTitle());
-        assertEquals(entry.getUser(), check.getUser());
+	    final WikiEntry check = target("wiki/index").request().get(WikiEntry.class);
+	    LOG.info("response: {}", check);
+	    
+		//assertEquals(entry.getPath(), check.getPath());
+        //assertEquals(entry.getTitle(), check.getTitle());
+        //assertEquals(entry.getUser(), check.getUser());
 	}
 }
