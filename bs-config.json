@@ -1,0 +1,8 @@
+{
+  "server": {
+    "baseDir": "src/main/resources/webapp",
+    "routes": {
+      "/node_modules": "node_modules"
+    }
+  }
+}

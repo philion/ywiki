@@ -14,3 +14,5 @@ buildNumber.properties
 .classpath
 .project
 .settings/
+
+node_modules/

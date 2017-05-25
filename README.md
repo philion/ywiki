@@ -48,10 +48,12 @@ Starting with https://github.com/awslabs/aws-serverless-java-container/tree/mast
 ### Markdown Editing
 * SimpleMDE: https://simplemde.com/
 * StackEdit: https://github.com/benweet/stackedit
-* Editor.md: https://pandao.github.io/editor.md/en.html
+* Editor.md: https://pandao.github.io/editor.md/en.html  DIAGRAM, 2-pane
 * Trumpbowyg: http://alex-d.github.io/Trumbowyg/
 * MarkdownPlus: https://github.com/tylingsoft/markdown-plus
 * Bootstrap Markdown: http://www.codingdrama.com/bootstrap-markdown/
+
+https://github.com/bramp/js-sequence-diagrams
 
 - Which supports interaction diagrams?
 
