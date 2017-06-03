@@ -29,7 +29,7 @@ public class LambdaHandler implements RequestHandler<AwsProxyRequest, AwsProxyRe
 
     @Override
     public AwsProxyResponse handleRequest(AwsProxyRequest awsProxyRequest, Context context) {
-        LOG.info("request: {}, context: {}", awsProxyRequest, context);
+        LOG.debug("request: {}, context: {}", awsProxyRequest.getPath(), context.getFunctionName());
         return handler.proxy(awsProxyRequest, context);
     }
 }
