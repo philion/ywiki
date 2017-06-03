@@ -6,11 +6,28 @@ This is a simple Markdown wiki, in [Java](https://docs.oracle.com/javase/8/docs/
 
 Starting with https://github.com/awslabs/aws-serverless-java-container/tree/master/samples/jersey/pet-store as a seed project.
 
+## Building & Running
+
+Standard [Maven](https://maven.apache.org/) build:
+
+    % mvn clean packge
+    
+To run an instance locally:
+
+    % mvn exec:java
+    
+This will wrap the Jersey instance in a Grizzly server and run at:
+
+    http://localhost:8080/static/index.html
+
 ## Next Steps
 
 * [x] Add simple MD file, make sure it gets served.
-* [ ] Add JS-based editor, host resources locally.
+* [x] Add simple SPA editor, host resources locally.
+* [ ] Add Cognito integrated.
 * [ ] Get POST/UPDATE working.
+* [ ] Add cloud-based doc store.
+* [ ] Clean up and release.
 
 ### Notes on sam.yaml
 

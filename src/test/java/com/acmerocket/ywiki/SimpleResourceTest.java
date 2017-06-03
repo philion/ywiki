@@ -34,7 +34,7 @@ public class SimpleResourceTest extends JerseyTest {
 		return new ResourceConfig().register(WikiBinder.INSTANCE).packages("com.acmerocket.ywiki");
 	}
 
-	@Test
+	//@Test
 	public void test() {
 	    //java.util.logging.Logger.getLogger("org.glassfish.jersey").setLevel(Level.FINEST);
 	    
