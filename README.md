@@ -16,9 +16,9 @@ To run an instance locally:
 
     % mvn exec:java
     
-This will wrap the Jersey instance in a Grizzly server and run at:
+This will wrap the Jersey instance in a Grizzly server and run at: 
 
-    http://localhost:8080/static/index.html
+> http://localhost:8080/static/index.html
 
 ## Next Steps
 
