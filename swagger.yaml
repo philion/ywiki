@@ -1,0 +1,107 @@
+swagger: '2.0'
+info:
+  description: Swagger API description for ywiki
+  version: 1.0.0
+  title: ywiki API
+  # put the contact info for your development or API team
+  contact:
+    email: philion@acmerocket.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: admin
+  description:  Admin-only calls
+- name: editor
+  description: Operations available to wiki editors
+- name: public
+  description: Operations available to any reader
+# schemes:
+# - http
+paths:
+  /entry/{path}:
+    get:
+      tags:
+      - public
+      summary: gets wiki entry
+      operationId: getEntry
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: path
+        description: path of wiki entry
+        required: true
+        type: string
+      responses:
+        200:
+          description: found entry
+          schema:
+            type: object
+            additionalProperties:
+              $ref: '#/definitions/Entry'
+        404:
+          description: unknow entry
+    post:
+      tags:
+      - editor
+      summary: update wiki entry
+      operationId: updateEntry
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: path
+        description: path of wiki entry
+        required: true
+        type: string
+      responses:
+        200:
+          description: updated
+        404:
+          description: unknow entry
+  /static/{path}:
+      get:
+      tags:
+      - public
+      summary: gets static content 
+      operationId: getContent
+      parameters:
+      - in: path
+        name: path
+        description: path of content
+        required: true
+        type: string
+      responses:
+        200:
+          description: found content
+        404:
+          description: unknow path
+definitions:
+  Entry:
+    type: object
+    properties:
+      path:
+        type: string
+      title:
+        type: string
+      user:
+        type: string
+      content:
+        type: string
+      edited:
+        type: string
+        format: date-time
+    xml:
+      name: entry
+
+externalDocs:
+  url: https://github.com/philion/ywiki
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /philion/ywiki/1.0.0
+schemes:
+ - https

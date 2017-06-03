@@ -25,6 +25,7 @@ This will wrap the Jersey instance in a Grizzly server and run at:
 * [x] Add simple MD file, make sure it gets served.
 * [x] Add simple SPA editor, host resources locally.
 * [ ] Add Cognito integrated.
+* [ ] Setup Swagger and API frontend
 * [ ] Get POST/UPDATE working.
 * [ ] Add cloud-based doc store.
 * [ ] Clean up and release.
