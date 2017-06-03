@@ -37,6 +37,27 @@ This will wrap the Jersey instance in a Grizzly server and run at:
   * CodeUri: from mvn
   * API Value: from @Path
   
+### Notes on Deploying
+
+* Create a bucket:
+
+    aws s3api create-bucket --bucket wiki-7vhvp4r9 --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
+
+* Update sam.yml to have correct version (CodeUri)
+* Upload JAR
+
+    aws cloudformation package --template-file sam.yaml --output-template-file target/output-sam.yaml --s3-bucket wiki-7vhvp4r9
+    
+* Deploy Lambda
+
+    aws cloudformation deploy --template-file target/output-sam.yaml --stack-name wiki --capabilities CAPABILITY_IAM
+    
+* Confirm it's installed
+
+    aws cloudformation describe-stacks --stack-name wiki
+
+**TODO:** Add the above to mvn as special targets. CodeUri (in sam.yml) can be generated (resource copy) as well.
+  
 ## Open Questions
 
 * How will revision history be stored?

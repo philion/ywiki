@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: com.acmerocket.ywiki.LambdaHandler::handleRequest
       Runtime: java8
-      CodeUri: target/ywiki-0.1-SNAPSHOT.jar
+      CodeUri: target/ywiki-0.8-SNAPSHOT.jar
       MemorySize: 512
       Policies: AWSLambdaBasicExecutionRole
       Timeout: 20
