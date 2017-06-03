@@ -1,12 +1,8 @@
 package com.acmerocket.ywiki;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
@@ -22,6 +18,7 @@ public class InMemoryWikiDAO implements WikiDAO {
     
     @PostConstruct
     public void init() throws IOException {
+        /*
         try (
             InputStream in = this.getClass().getResourceAsStream("/index.md");
             BufferedReader buffer = new BufferedReader(new InputStreamReader(in))) {
@@ -34,6 +31,7 @@ public class InMemoryWikiDAO implements WikiDAO {
             
             this.update(entry);
         }
+        */
     }
 
     @Override

@@ -1,0 +1,21 @@
+{
+  "name": "static",
+  "homepage": "https://github.com/philion/ywiki",
+  "authors": [
+    "philion"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "showdown": "^1.7.1"
+  }
+}
