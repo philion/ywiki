@@ -18,6 +18,7 @@ package com.acmerocket.ywiki;
 import java.io.FileNotFoundException;
 
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
  
@@ -26,6 +27,6 @@ public class WikiExceptionMapper implements ExceptionMapper<FileNotFoundExceptio
 
     @Override
     public Response toResponse(FileNotFoundException ex) {
-        return Response.status(404).entity(ex.getMessage()).type("text/plain").build();
+        return Response.status(Status.NOT_FOUND).build();
     }
 }

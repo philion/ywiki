@@ -15,19 +15,15 @@
  */
 package com.acmerocket.ywiki;
 
+import java.io.IOException;
+
 import javax.ws.rs.core.Application;
-import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
-import org.junit.Test;
 
-/**
- * @author philion
- *
- */
-public class SimpleResourceTest extends JerseyTest {
-    private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(SimpleResourceTest.class);
+public class WikiResourceTest extends JerseyTest {
+    private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(WikiResourceTest.class);
 
 	@Override
 	protected Application configure() {
@@ -35,7 +31,7 @@ public class SimpleResourceTest extends JerseyTest {
 	}
 
 	//@Test
-	public void test() {
+	public void test() throws IOException {
 	    //java.util.logging.Logger.getLogger("org.glassfish.jersey").setLevel(Level.FINEST);
 	    
 	    // create the wikipage
@@ -56,9 +52,5 @@ public class SimpleResourceTest extends JerseyTest {
 		//assertEquals(entry.getPath(), check.getPath());
         //assertEquals(entry.getTitle(), check.getTitle());
         //assertEquals(entry.getUser(), check.getUser());
-		
-	    Response response = target("/static/index.html").request().get();
-	    LOG.info("response: {}", response);
-
 	}
 }
