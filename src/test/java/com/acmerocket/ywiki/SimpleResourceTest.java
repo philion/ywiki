@@ -15,18 +15,12 @@
  */
 package com.acmerocket.ywiki;
 
-import static org.junit.Assert.assertEquals;
-
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Application;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
-
-import com.acmerocket.ywiki.model.WikiEntry;
 
 /**
  * @author philion
@@ -56,11 +50,15 @@ public class SimpleResourceTest extends JerseyTest {
 	    //LOG.debug("response: {}", response);
 	    //assertEquals(200, response.getStatus());
 	    
-	    final WikiEntry check = target("wiki/index").request().get(WikiEntry.class);
-	    LOG.info("response: {}", check);
+	    //final WikiEntry check = target("wiki/index").request().get(WikiEntry.class);
+	    //LOG.info("response: {}", check);
 	    
 		//assertEquals(entry.getPath(), check.getPath());
         //assertEquals(entry.getTitle(), check.getTitle());
         //assertEquals(entry.getUser(), check.getUser());
+		
+	    Response response = target("/static/index.html").request().get();
+	    LOG.info("response: {}", response);
+
 	}
 }
