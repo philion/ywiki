@@ -6,29 +6,68 @@ This is a simple Markdown wiki, in [Java](https://docs.oracle.com/javase/8/docs/
 
 Starting with https://github.com/awslabs/aws-serverless-java-container/tree/master/samples/jersey/pet-store as a seed project.
 
+## Setup
+
+Make sure the following are installed:
+
+* [Java 1.8](http://jdk.java.net/8/)
+* [Maven](https://maven.apache.org/)
+* [awscli](https://aws.amazon.com/cli/) 
+
+### homebrew
+
+If you have [homebrew](https://brew.sh) installed, use the following
+
+    brew update
+    brew cask install java
+    brew install maven
+    brew install awscli
+
 ## Building & Running
 
 Standard [Maven](https://maven.apache.org/) build:
 
-    % mvn clean packge
+    mvn clean packge
     
 To run an instance locally:
 
-    % mvn exec:java
+    mvn exec:java
     
 This will wrap the Jersey instance in a Grizzly server and run at: 
 
-> http://localhost:8080/static/index.html
+* http://localhost:8080/static/index.html
+
+## Deploying
+
+A simple deploy script exists to deploy the constructed JAR. Edit the deploy script to confirm:
+
+* deployBucket - name of S3 bucket to use for holding deployable JARs
+
+Then run:
+
+    ./deploy.sh
+    
+This will:
+
+1. create an S3 bucket for deployments
+2. package and upload the versioned package
+3. deploy the version
+4. get the deployed URL
+5. test the correct version was deplyed
 
 ## Next Steps
 
-* [x] Add simple MD file, make sure it gets served.
-* [x] Add simple SPA editor, host resources locally.
+* [*] Add simple MD file, make sure it gets served.
+* [*] Add simple SPA editor, host resources locally.
 * [ ] Add Cognito integrated.
 * [ ] Setup Swagger and API frontend
 * [ ] Get POST/UPDATE working.
 * [ ] Add cloud-based doc store.
 * [ ] Clean up and release.
+* [*] Add fully automated deploy scripts
+* [*] Add project versioning
+* [ ] Add log-query script
+* [ ] Add status script / CW dash
 
 ### Notes on sam.yaml
 
@@ -36,28 +75,7 @@ This will wrap the Jersey instance in a Grizzly server and run at:
   * Handler: from annotation on method
   * Runtime: from mvn
   * CodeUri: from mvn
-  * API Value: from @Path
-  
-### Notes on Deploying
-
-* Create a bucket:
-
-    aws s3api create-bucket --bucket wiki-7vhvp4r9 --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
-
-* Update sam.yml to have correct version (CodeUri)
-* Upload JAR
-
-    aws cloudformation package --template-file sam.yaml --output-template-file target/output-sam.yaml --s3-bucket wiki-7vhvp4r9
-    
-* Deploy Lambda
-
-    aws cloudformation deploy --template-file target/output-sam.yaml --stack-name wiki --capabilities CAPABILITY_IAM
-    
-* Confirm it's installed
-
-    aws cloudformation describe-stacks --stack-name wiki
-
-**TODO:** Add the above to mvn as special targets. CodeUri (in sam.yml) can be generated (resource copy) as well.
+  * API Value: from @Path 
   
 ## Open Questions
 

@@ -64,4 +64,11 @@ public class RootResourceTest extends JerseyTest {
         
         assertEquals(404, response.getStatus());
     }
+    
+    @Test
+    public void testInfo() throws IOException {
+        String version = target("/version").request().get(String.class);
+        //LOG.info("{}", map);
+        assertEquals(version, "0.8-SNAPSHOT");
+    }
 }
