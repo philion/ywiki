@@ -57,15 +57,15 @@ This will:
 
 ## Next Steps
 
-* [*] Add simple MD file, make sure it gets served.
-* [*] Add simple SPA editor, host resources locally.
+* [x] Add simple MD file, make sure it gets served.
+* [x] Add simple SPA editor, host resources locally.
 * [ ] Add Cognito integrated.
 * [ ] Setup Swagger and API frontend
 * [ ] Get POST/UPDATE working.
 * [ ] Add cloud-based doc store.
 * [ ] Clean up and release.
-* [*] Add fully automated deploy scripts
-* [*] Add project versioning
+* [x] Add fully automated deploy scripts
+* [x] Add project versioning
 * [ ] Add log-query script
 * [ ] Add status script / CW dash
 
